@@ -7,7 +7,8 @@
   <script src="js/main.js"></script>
 </head>
 <body ng-app="youtubeApp">
-	<div ng-controller="MainController">
+ <p>Enter a search term to change the video feed: <input type="text" ng-model="search" placeholder="i.e. news"></input></p>
+	<div ng-controller="VideoController">
 		<div class="container">
 			<div ng-repeat="video in videos">
 				<div class="col-lg-4 col-md-6 container">
