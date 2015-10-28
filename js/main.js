@@ -7,10 +7,12 @@ app.controller("VideoController", ["$scope", "$http", "$timeout", function($scop
 
  $scope.$watch("search", function(search) {
  	var time;
-	if (search != undefined) { searchText = search; time = 1000; }
+	if (search) { searchText = search; time = 1000; }
 	else time = 0;
 	var youtube = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchText + "&maxResults=12";
-	$timeout(function() {
+	var timeout;
+	if (timeout) $timeout.cancel(timeout);
+	timeout = $timeout(function() {
 		$http({
 	    url: youtube + "&key=" + apiKey + "&callback=JSON_CALLBACK",
 	    method: "jsonp"
